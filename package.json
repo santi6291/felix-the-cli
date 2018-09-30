@@ -1,0 +1,28 @@
+{
+  "name": "VMG-Frontend-framework",
+  "version": "0.1.0",
+  "description": "NPM package for Vector Frontend Framework with CLI support",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vector/VMG-Frontend-framework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vector/VMG-Frontend-framework/issues"
+  },
+  "homepage": "https://github.com/vector/VMG-Frontend-framework#readme",
+  "dependencies": {
+    "commander": "^2.18.0",
+    "typescript": "^3.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^10.11.3"
+  }
+}

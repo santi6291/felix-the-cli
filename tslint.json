@@ -1,0 +1,36 @@
+{
+  "rules": {
+    "no-duplicate-variable": true,
+    "prefer-const": true,
+    "no-null-keyword": true,
+    "no-require-imports": true,
+    "arrow-return-shorthand": true,
+    "import-spacing": true,
+    "no-eval": true,
+    "prefer-template": [
+      true,
+      "allow-single-concat"
+    ],
+    "no-unused-variable": [
+      true
+    ],
+    "semicolon": [
+      true,
+      "always",
+      "ignore-bound-class-methods"
+    ],
+    "indent": [
+      true,
+      4,
+      "spaces"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape"
+    ]
+  },
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ]
+}
