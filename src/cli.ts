@@ -2,7 +2,7 @@
 import { Command } from 'commander';
 import { argv } from 'process';
 
-// import init from './commands/init';
+import InitCommand from './commands/init/init';
 
 class Cli {
     private pjson = require('../package.json');
@@ -25,9 +25,7 @@ class Cli {
             .option('--scss', 'Enable SCSS')
             .option('--ts', 'Enable TypeScript')
             .option('--twig', 'Enable Twig')
-            .action((options)=>{
-                console.log(options.scss, options.ts, options.twig);
-            });
+            .action(InitCommand.run.bind(InitCommand));
     }
 }
 
