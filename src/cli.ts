@@ -5,8 +5,8 @@ import { argv } from 'process';
 import InitCommand from './commands/init/init';
 
 class Cli {
-    private pjson = require('../package.json');
-    private program = new Command();
+    private pjson: any = require('../package.json');
+    private program: Command = new Command();
 
     constructor() {
         this.program.version(this.pjson.version);

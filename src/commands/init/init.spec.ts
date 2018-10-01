@@ -1,8 +1,10 @@
+import { argv } from 'process';
+import { Command, Option } from 'commander';
 import { expect } from 'chai';
 import 'mocha';
 
 import InitCommand from './init';
-import { IinitOptions } from './init.d';
+// import { IinitOptions } from './init.d';
 
 export default class InitSpec {
 
@@ -13,20 +15,34 @@ export default class InitSpec {
     }
 
     private describe1() {
-        it('Should Add Scss', this.itShouldAdd.bind(this, {scss: true}));
-        it('Should Add TS', this.itShouldAdd.bind(this, {ts: true}));
-        it('Should Add TWIG', this.itShouldAdd.bind(this, {twig: true}));
+        it('Should Add Scss', this.itShouldAdd.bind(this, 'scss') );
+        it('Should Add TS', this.itShouldAdd.bind(this, 'ts'));
+        it('Should Add TWIG', this.itShouldAdd.bind(this, 'twig'));
+        it('Should Add All', this.itShouldAdd.bind(this));
     }
 
-    private itShouldAdd(prop: string) {
-        const options: IinitOptions = {};
-        options[prop] = true;
-        const result = InitCommand.run(options);
+    private itShouldAdd(prop: string = '') {
+        const fakeArgv: string[] = argv.slice(0)
+        const fakeProgram:Command = new Command();
 
-        expect(result[prop]).to.be.true;
+        fakeArgv.push(`--${prop}`);
+
+        fakeProgram.option('--scss');
+        fakeProgram.option('--ts');
+        fakeProgram.option('--twig');
+        fakeProgram.parse(fakeArgv);
+
+        const result = InitCommand.run( fakeProgram.opts() );
+        for (const key in result) {
+            const value: boolean | undefined = result[key];
+            if (prop == '' || key == prop) {
+                expect(value).to.be.true;
+            } else {
+                expect(value).to.not.be.true;
+            }
+        }
     }
 
     private describe2() {
-
     }
 }
