@@ -1,0 +1,56 @@
+{
+  "services": {
+    "scss": {
+      "main": {
+        "path": "/src/scss",
+        "template": "./templates/scss/app.hb"
+      },
+      "types": {
+        "block": {
+          "path": "/blocks",
+          "template": "./templates/scss/blocks.hb"
+        },
+        "components": {
+          "path": "/components",
+          "template": "./templates/scss/components.hb"
+        }
+      }
+    },
+    "ts": {
+      "main": {
+        "path": "/src/ts",
+        "template": "./templates/ts/app.hb"
+      },
+      "types": {
+        "block": {
+          "path": "/blocks",
+          "template": "./templates/ts/blocks.hb"
+        },
+        "components": {
+          "path": "/components",
+          "template": "./templates/ts/components.hb"
+        },
+        "service": {
+          "path": "/service",
+          "template": "./templates/ts/service.hb"
+        }
+      }
+    },
+    "twig": {
+      "main": {
+        "path": "/src/views",
+        "template": "./templates/twig/app.hb"
+      },
+      "types": {
+        "block": {
+          "path": "/blocks",
+          "template": "./templates/twig/blocks.hb"
+        },
+        "components": {
+          "path": "/components",
+          "template": "./templates/twig/components.hb"
+        }
+      }
+    }
+  }
+}
