@@ -4,7 +4,7 @@
   "description": "NPM package for Vector Frontend Framework with CLI support",
   "main": "index.js",
   "scripts": {
-    "test": "",
+    "test": "mocha -r ts-node/register src/test.ts",
     "prestart": "npm install",
     "start": "npx tsc -w"
   },
@@ -31,6 +31,7 @@
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.11.3",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.1"
   }
 }
