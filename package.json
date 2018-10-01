@@ -4,15 +4,19 @@
   "description": "NPM package for Vector Frontend Framework with CLI support",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "",
+    "prestart": "npm install",
     "start": "npx tsc -w"
+  },
+  "bin": {
+    "frontend": "./build/cli.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vector/VMG-Frontend-framework.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Santiag J Sosa",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vector/VMG-Frontend-framework/issues"
@@ -23,6 +27,10 @@
     "typescript": "^3.1.1"
   },
   "devDependencies": {
-    "@types/node": "^10.11.3"
+    "@types/chai": "^4.1.6",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^10.11.3",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
   }
 }
