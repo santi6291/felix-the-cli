@@ -1,10 +1,11 @@
 import { resolve } from 'path';
 
 import { IinitOptions } from './init.d';
+import { IConfigFE } from '../../types/config.d';
 
 export default class InitCommand {
-    private static feconfig: any = require('../../../assets/feconfig.json');
-    public static rootDir: any = resolve(__dirname,'../../../');
+    private static feconfig: IConfigFE.Config = require('../../../assets/feconfig.json');
+    public static rootDir: string = resolve(__dirname,'../../../');
 
     public static run(options: IinitOptions){
         const services: string[] = [];
@@ -35,28 +36,11 @@ export default class InitCommand {
     }
 
     private static addService(service: string) {
-        switch (service) {
-            case "twig":
-                this.addTwig();
-            break;
-            case "ts":
-                this.addTs();
-            break;
-            case "scss":
-                this.addScss();
-            break;
+        const serviceConfig: IConfigFE.Service = this.feconfig.services[service];
+        if (!serviceConfig) {
+            return false;
         }
-    }
 
-    private static addTwig() {
-        console.log('Adding twig');
-    }
-
-    private static addTs() {
-        console.log('Adding TypeScript');
-    }
-
-    private static addScss() {
-        console.log('Adding scss');
+        console.log(serviceConfig);
     }
 }

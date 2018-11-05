@@ -10,7 +10,7 @@ export namespace IConfigFE {
 
     export interface Service {
         main: ServiceMain;
-        types: ServiceTypes;
+        categories: ServiceCategories;
     }
 
     export interface ServiceMain {
@@ -18,11 +18,11 @@ export namespace IConfigFE {
         template: string;
     }
 
-    export interface ServiceTypes {
-        [key:string]: ServiceType;
+    export interface ServiceCategories {
+        [key:string]: ServiceCategory;
     }
 
-    export interface ServiceType {
+    export interface ServiceCategory {
         path: string;
         template: string;
     }
