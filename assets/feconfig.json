@@ -1,11 +1,23 @@
 {
   "services": {
     "scss": {
-      "main": {
+      "main": [{
         "path": "/src/scss",
         "template": "./templates/scss/app.hb"
-      },
-      "types": {
+      }, {
+        "path": "/src/scss/core",
+        "template": "./templates/scss/mixins.hb"
+      }, {
+        "path": "/src/scss/core",
+        "template": "./templates/scss/functions.hb"
+      }, {
+        "path": "/src/scss/core",
+        "template": "./templates/scss/settings.hb"
+      }, {
+        "path": "/src/scss/core",
+        "template": "./templates/scss/settings.hb"
+      }],
+      "categories": {
         "block": {
           "path": "/blocks",
           "template": "./templates/scss/blocks.hb"
@@ -13,15 +25,19 @@
         "components": {
           "path": "/components",
           "template": "./templates/scss/components.hb"
+        },
+        "utility": {
+          "path": "/utilities",
+          "template": "./templates/scss/utilities.hb"
         }
       }
     },
     "ts": {
-      "main": {
+      "main": [{
         "path": "/src/ts",
         "template": "./templates/ts/app.hb"
-      },
-      "types": {
+      }],
+      "categories": {
         "block": {
           "path": "/blocks",
           "template": "./templates/ts/blocks.hb"
@@ -37,11 +53,11 @@
       }
     },
     "twig": {
-      "main": {
+      "main": [{
         "path": "/src/views",
-        "template": "./templates/twig/app.hb"
-      },
-      "types": {
+        "template": "./templates/twig/main.hb"
+      }],
+      "categories": {
         "block": {
           "path": "/blocks",
           "template": "./templates/twig/blocks.hb"
