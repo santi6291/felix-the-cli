@@ -7,32 +7,56 @@ export default class InitCommand {
     public static rootDir: any = resolve(__dirname,'../../../');
 
     public static run(options: IinitOptions){
+        const services: string[] = [];
         if (options.scss) {
-            console.log('Adding scss');
-            this.addService('scss');
+            services.push('scss');
         }
 
         if (options.ts) {
-            console.log('Adding TypeScript');
-            this.addService('ts');
+            services.push('ts');
         }
 
         if (options.twig) {
-            console.log('Adding twig');
-            this.addService('twig');
+            services.push('twig');
         }
 
         if (!options.scss && !options.ts && !options.twig) {
             options.scss = options.ts = options.twig = true;
-            console.log('Adding scss, ts, twig' );
-            this.addService();
+            services.push('scss');
+            services.push('ts');
+            services.push('twig');
         }
-
+        this.addServices(services);
         return options;
-        // console.log(options.scss, options.ts, options.twig);
     }
 
-    static addService(type?: string) {
+    private static addServices(services: string[]) {
+        services.forEach(this.addService.bind(this));
+    }
 
+    private static addService(service: string) {
+        switch (service) {
+            case "twig":
+                this.addTwig();
+            break;
+            case "ts":
+                this.addTs();
+            break;
+            case "scss":
+                this.addScss();
+            break;
+        }
+    }
+
+    private static addTwig() {
+        console.log('Adding twig');
+    }
+
+    private static addTs() {
+        console.log('Adding TypeScript');
+    }
+
+    private static addScss() {
+        console.log('Adding scss');
     }
 }
