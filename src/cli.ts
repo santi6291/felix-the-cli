@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import { argv } from 'process';
 
 import InitCommand from './commands/init/init';
 
@@ -8,7 +7,7 @@ class Cli {
     private pjson: any = require('../package.json');
     private program: Command = new Command();
 
-    constructor() {
+    constructor(argv: string[]) {
         this.program.version(this.pjson.version);
         this.setCommands();
         this.program.parse(argv);
@@ -29,4 +28,4 @@ class Cli {
     }
 }
 
-new Cli();
+new Cli(process.argv);
