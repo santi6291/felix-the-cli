@@ -1,3 +1,4 @@
+/// <reference >
 export interface IinitOptions {
     [key: string]: boolean | undefined;
     scss?: boolean;

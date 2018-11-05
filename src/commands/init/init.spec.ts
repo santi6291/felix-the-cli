@@ -4,7 +4,6 @@ import { expect } from 'chai';
 import 'mocha';
 
 import InitCommand from './init';
-// import { IinitOptions } from './init.d';
 
 export default class InitSpec {
 
