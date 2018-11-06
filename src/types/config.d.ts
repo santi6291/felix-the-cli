@@ -9,20 +9,15 @@ export namespace IConfigFE {
     }
 
     export interface Service {
-        main: ServiceMain;
+        main: ServiceItem[];
         categories: ServiceCategories;
     }
 
-    export interface ServiceMain {
-        path: string;
-        template: string;
-    }
-
     export interface ServiceCategories {
-        [key:string]: ServiceCategory;
+        [key:string]: ServiceItem;
     }
 
-    export interface ServiceCategory {
+    export interface ServiceItem {
         path: string;
         template: string;
     }
