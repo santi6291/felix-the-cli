@@ -11,6 +11,12 @@ class Cli {
 
     constructor(argv: string[]) {
         process.env['APP_DIR'] = resolve(__dirname, '../');
+        process.env['OUTPUT_DIR'] = process.env.PWD;
+        console.log({
+            'APP_DIR': process.env['APP_DIR'],
+            'ROOT_DIR': process.env['ROOT_DIR'],
+        });
+
         this.program.version(this.pjson.version);
         this.setCommands();
         this.program.parse(argv);
