@@ -3,68 +3,68 @@
     "scss": {
       "main": [{
         "path": "/src/scss",
-        "template": "./templates/scss/app.hb"
+        "template": "./assets/templates/scss/app.hb"
       }, {
         "path": "/src/scss/core",
-        "template": "./templates/scss/mixins.hb"
+        "template": "./assets/templates/scss/mixins.hb"
       }, {
         "path": "/src/scss/core",
-        "template": "./templates/scss/functions.hb"
+        "template": "./assets/templates/scss/functions.hb"
       }, {
         "path": "/src/scss/core",
-        "template": "./templates/scss/settings.hb"
+        "template": "./assets/templates/scss/settings.hb"
       }, {
         "path": "/src/scss/core",
-        "template": "./templates/scss/settings.hb"
+        "template": "./assets/templates/scss/settings.hb"
       }],
       "categories": {
         "block": {
           "path": "/blocks",
-          "template": "./templates/scss/blocks.hb"
+          "template": "./assets/templates/scss/blocks.hb"
         },
         "components": {
           "path": "/components",
-          "template": "./templates/scss/components.hb"
+          "template": "./assets/templates/scss/components.hb"
         },
         "utility": {
           "path": "/utilities",
-          "template": "./templates/scss/utilities.hb"
+          "template": "./assets/templates/scss/utilities.hb"
         }
       }
     },
     "ts": {
       "main": [{
         "path": "/src/ts",
-        "template": "./templates/ts/app.hb"
+        "template": "./assets/templates/ts/app.hb"
       }],
       "categories": {
         "block": {
           "path": "/blocks",
-          "template": "./templates/ts/blocks.hb"
+          "template": "./assets/templates/ts/blocks.hb"
         },
         "components": {
           "path": "/components",
-          "template": "./templates/ts/components.hb"
+          "template": "./assets/templates/ts/components.hb"
         },
         "service": {
           "path": "/service",
-          "template": "./templates/ts/service.hb"
+          "template": "./assets/templates/ts/service.hb"
         }
       }
     },
     "twig": {
       "main": [{
         "path": "/src/views",
-        "template": "./templates/twig/main.hb"
+        "template": "./assets/templates/twig/main.hb"
       }],
       "categories": {
         "block": {
           "path": "/blocks",
-          "template": "./templates/twig/blocks.hb"
+          "template": "./assets/templates/twig/blocks.hb"
         },
         "components": {
           "path": "/components",
-          "template": "./templates/twig/components.hb"
+          "template": "./assets/templates/twig/components.hb"
         }
       }
     }
