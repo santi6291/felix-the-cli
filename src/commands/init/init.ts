@@ -6,7 +6,6 @@ import { TemplateService } from '../../services/template/template';
 
 export default class InitCommand {
     private static feconfig: IConfigFE.Config = require('../../../assets/feconfig.json');
-    public static rootDir: string = resolve(__dirname,'../../../');
 
     public static run(options: IinitOptions){
         const services: string[] = [];

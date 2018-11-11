@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+import { resolve } from 'path';
+
 import { Command } from 'commander';
 
 import InitCommand from './commands/init/init';
@@ -8,6 +10,7 @@ class Cli {
     private program: Command = new Command();
 
     constructor(argv: string[]) {
+        process.env['APP_DIR'] = resolve(__dirname, '../');
         this.program.version(this.pjson.version);
         this.setCommands();
         this.program.parse(argv);

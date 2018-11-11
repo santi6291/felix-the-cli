@@ -7,6 +7,7 @@ class TestEnv {
     private sandboxDir: string = resolve(__dirname, '../', '.sandbox');
 
     constructor() {
+        process.env['APP_DIR'] = resolve(__dirname, '../');
         // Create Environment
         console.log('Creating Sandbox Directory');
         // console.log(this.sandboxDir);
