@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha -r ts-node/register src/test.spec.ts",
-    "postinstall": "npm start",
+    "preinstall": "npm start",
     "watch": "tsc -w",
     "start": "tsc"
   },
