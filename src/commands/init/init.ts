@@ -37,19 +37,15 @@ export default class InitCommand {
 
     private static addService(service: string) {
         const serviceConfig: IConfigFE.Service = this.feconfig.services[service];
-        let promises: Promise<any>[] = [];
         if (!serviceConfig) {
             return false;
         }
 
-        promises = serviceConfig.main.map(this.compileMainTemplates.bind(this));
-
-        // serviceConfig.categories
-
-        console.log(serviceConfig);
+        serviceConfig.main.forEach(this.compileMainTemplates.bind(this));
     }
 
     private static compileMainTemplates(options: IConfigFE.ServiceItem) {
         const template: TemplateService = new TemplateService(options);
+        console.log(template.compile());
     }
 }
