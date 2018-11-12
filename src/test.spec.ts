@@ -13,14 +13,12 @@ class TestEnv {
     private initTest(err: Error, folder: string){
         process.env['APP_DIR'] = path.resolve(__dirname, '../');
         process.env['OUTPUT_DIR'] = folder;
-        console.log(folder);
-        // Run test
-        new InitSpec();
+        console.log('OUTPUT_DIR: ', folder);
+
         new InitSpecs();
 
-        // Destrory Environment
         console.log('Destroying Sandbox Directory');
-        return fs.rmdirSync(<string>process.env['OUTPUT_DIR']);
+        fs.rmdirSync(<string>process.env['OUTPUT_DIR']);
     }
 }
 
