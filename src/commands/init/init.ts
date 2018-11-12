@@ -1,4 +1,5 @@
-import { resolve } from 'path';
+import * as path from 'path';
+import * as fs from 'fs';
 
 import { IinitOptions } from './init.d';
 import { IConfigFE } from '../../types/config.d';
@@ -41,11 +42,34 @@ export default class InitCommand {
             return false;
         }
 
-        serviceConfig.main.forEach(this.compileMainTemplates.bind(this));
+        serviceConfig.main.forEach( opts=>this.compileMainTemplates(opts, serviceConfig.extension) );
     }
 
-    private static compileMainTemplates(options: IConfigFE.ServiceItem) {
+    private static compileMainTemplates(options: IConfigFE.ServiceItem, extension: string) {
         const template: TemplateService = new TemplateService(options);
-        console.log(template.compile());
+        const name = options.template
+            .replace(/.*(\/)/, '') // remove path, only leave file name
+            .replace(/\..*/, ''); // remove extension from file
+        template.name = name;
+        const compile = template.compile();
+        const fullPath: string = path.resolve(<string>process.env['OUTPUT_DIR'], options.path);
+        const filePath: string =   path.resolve(fullPath, `${name}.${extension}`);
+        this.createDir(fullPath);
+        fs.writeFileSync(filePath, compile);
+        // console.log('options.path', fs.statSync(fullPath));
     }
+
+    /**
+     * Create file directory if it does not exist
+     * @param {string} dir [description]
+     */
+    private static createDir(dir: string) {
+        try{
+            return fs.mkdirSync(dir, { recursive: true });
+        } catch(e){
+            return false;
+        }
+
+    }
+
 }
