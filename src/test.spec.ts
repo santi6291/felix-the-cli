@@ -3,7 +3,7 @@ import * as path from 'path';
 import * as os from 'os';
 
 
-import InitSpec from './commands/init/init.spec';
+import InitSpecs from './commands/init/init.spec';
 
 class TestEnv {
     constructor() {
@@ -16,6 +16,7 @@ class TestEnv {
         console.log(folder);
         // Run test
         new InitSpec();
+        new InitSpecs();
 
         // Destrory Environment
         console.log('Destroying Sandbox Directory');

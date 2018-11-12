@@ -5,7 +5,7 @@ import 'mocha';
 
 import InitCommand from './init';
 
-export default class InitSpec {
+export default class InitSpecs {
 
     constructor() {
         describe('Check for dependecies to add', this.describe1.bind(this));
