@@ -7,28 +7,20 @@ import * as path from 'path';
 import { IConfigFE } from '../../types/config.d';
 
 export class TemplateService {
-    // private path: string;
-    private templateStr: string = '';
-    private data: any = {};
     private options: IConfigFE.ServiceItem;
 
     constructor(options: IConfigFE.ServiceItem) {
         this.options = options;
     }
 
-    public set name(name : string | undefined) {
-        // remove extension
-        this.data['name'] = name
-    }
-
-    public compile() {
+    public compile(data: any) {
         const path = this.fullPath(this.options.template);
-        this.templateStr = fs.readFileSync(path, 'utf8');
-        return Mustache.render(this.templateStr, this.data);
+        const template: string = fs.readFileSync(path, 'utf8');
+        return Mustache.render(template, data);
     }
 
     private fullPath(pathStr: string): string {
-        if (!process.env['APP_DIR']) throw 'APP_DIR not set';
+        if (!process.env['APP_DIR']) throw 'APP_DIR env variable not set';
         return path.resolve(<string>process.env['APP_DIR'], pathStr);
     }
 }
