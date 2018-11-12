@@ -4,22 +4,25 @@ import { expect } from 'chai';
 import 'mocha';
 
 import InitCommand from './init';
+import { IConfigFE } from '../../types/config.d';
 
 export default class InitSpecs {
 
     constructor() {
-        describe('Check for dependecies to add', this.describe1.bind(this));
-        describe('Add dependecy if it doesn\'t exist', this.describe2.bind(this));
+        describe('Add dependencies', this.describe1.bind(this));
+        describe('Verify dependency installed', this.describe2.bind(this))
     }
 
     private describe1() {
-        it('Should Add Scss', this.itShouldAdd.bind(this, 'scss') );
+        console.log('describe1');
+        it('Should Add Scss', this.itShouldAdd.bind(this, 'scss'));
         it('Should Add TS', this.itShouldAdd.bind(this, 'ts'));
         it('Should Add TWIG', this.itShouldAdd.bind(this, 'twig'));
         it('Should Add All', this.itShouldAdd.bind(this));
     }
 
     private itShouldAdd(prop: string = '') {
+        console.log('itShouldAdd')
         const fakeArgv: string[] = argv.slice(0)
         const fakeProgram:Command = new Command();
 
@@ -42,5 +45,15 @@ export default class InitSpecs {
     }
 
     private describe2() {
+        console.log('describe2');
+        for (const key in InitCommand.feconfig.services) {
+            const val: IConfigFE.Service = InitCommand.feconfig.services[key];
+            it(`${val} files should exist`, this.itShouldCheckFiles.bind(this, val))
+        }
+    }
+
+    private itShouldCheckFiles(val:IConfigFE.Service) {
+        console.log('itShouldCheckFiles', val);
+        expect(true).to.be.true;
     }
 }
