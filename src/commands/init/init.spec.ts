@@ -7,8 +7,7 @@ import InitCommand from './init';
 
 export default class InitSpec {
 
-    constructor(private sandboxDir: string) {
-        // console.log(this.sandboxDir);
+    constructor() {
         describe('Check for dependecies to add', this.describe1.bind(this));
         describe('Add dependecy if it doesn\'t exist', this.describe2.bind(this));
     }

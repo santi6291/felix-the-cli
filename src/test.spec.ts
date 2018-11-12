@@ -1,46 +1,25 @@
 import * as fs from 'fs';
-import { resolve } from 'path';
+import * as path from 'path';
+import * as os from 'os';
+
 
 import InitSpec from './commands/init/init.spec';
 
 class TestEnv {
-    private sandboxDir: string = resolve(__dirname, '../', '.sandbox');
-
     constructor() {
-        process.env['APP_DIR'] = resolve(__dirname, '../');
-        process.env['OUTPUT_DIR'] = this.sandboxDir;
+        fs.mkdtemp(`${os.tmpdir()}${path.sep}`, this.initTest.bind(this))
+    }
 
-        // Create Environment
-        console.log('Creating Sandbox Directory');
-        // console.log(this.sandboxDir);
-        this.createSanbox();
-
+    private initTest(err: Error, folder: string){
+        process.env['APP_DIR'] = path.resolve(__dirname, '../');
+        process.env['OUTPUT_DIR'] = folder;
+        console.log(folder);
         // Run test
-        new InitSpec(this.sandboxDir);
+        new InitSpec();
 
         // Destrory Environment
         console.log('Destroying Sandbox Directory');
-        this.rmDir();
-    }
-
-    private createSanbox() {
-
-        if (this.sandboxExist()) {
-            this.rmDir();
-        }
-        this.makeDir();
-    }
-
-    private sandboxExist() {
-        return fs.existsSync(this.sandboxDir);
-    }
-
-    private makeDir() {
-        return fs.mkdirSync(this.sandboxDir);
-    }
-
-    private rmDir() {
-        return fs.rmdirSync(this.sandboxDir);
+        return fs.rmdirSync(<string>process.env['OUTPUT_DIR']);
     }
 }
 
