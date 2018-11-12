@@ -6,7 +6,7 @@ import { IConfigFE } from '../../types/config.d';
 import { TemplateService } from '../../services/template/template';
 
 export default class InitCommand {
-    private static feconfig: IConfigFE.Config = require('../../../assets/feconfig.json');
+    static readonly feconfig: IConfigFE.Config = require('../../../assets/feconfig.json');
 
     public static run(options: IinitOptions){
         const services: string[] = [];
@@ -28,6 +28,7 @@ export default class InitCommand {
             services.push('ts');
             services.push('twig');
         }
+
         this.addServices(services);
         return options;
     }
@@ -37,6 +38,7 @@ export default class InitCommand {
     }
 
     private static addService(service: string) {
+        console.log(this.feconfig);
         const serviceConfig: IConfigFE.Service = this.feconfig.services[service];
         if (!serviceConfig) {
             return false;
@@ -50,13 +52,11 @@ export default class InitCommand {
         const name = options.template
             .replace(/.*(\/)/, '') // remove path, only leave file name
             .replace(/\..*/, ''); // remove extension from file
-        template.name = name;
-        const compile = template.compile();
+        const compile = template.compile({ name });
         const fullPath: string = path.resolve(<string>process.env['OUTPUT_DIR'], options.path);
         const filePath: string =   path.resolve(fullPath, `${name}.${extension}`);
         this.createDir(fullPath);
         fs.writeFileSync(filePath, compile);
-        // console.log('options.path', fs.statSync(fullPath));
     }
 
     /**
@@ -64,11 +64,7 @@ export default class InitCommand {
      * @param {string} dir [description]
      */
     private static createDir(dir: string) {
-        try{
-            return fs.mkdirSync(dir, { recursive: true });
-        } catch(e){
-            return false;
-        }
+        fs.mkdirSync(dir, { recursive: true });
 
     }
 
