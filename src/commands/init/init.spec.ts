@@ -1,4 +1,7 @@
 import { argv } from 'process';
+import * as fs from 'fs';
+import * as path from 'path';
+
 import { Command, Option } from 'commander';
 import { expect } from 'chai';
 import 'mocha';
@@ -14,7 +17,6 @@ export default class InitSpecs {
     }
 
     private describe1() {
-        console.log('describe1');
         it('Should Add Scss', this.itShouldAdd.bind(this, 'scss'));
         it('Should Add TS', this.itShouldAdd.bind(this, 'ts'));
         it('Should Add TWIG', this.itShouldAdd.bind(this, 'twig'));
@@ -22,7 +24,6 @@ export default class InitSpecs {
     }
 
     private itShouldAdd(prop: string = '') {
-        console.log('itShouldAdd')
         const fakeArgv: string[] = argv.slice(0)
         const fakeProgram:Command = new Command();
 
@@ -45,15 +46,24 @@ export default class InitSpecs {
     }
 
     private describe2() {
-        console.log('describe2');
         for (const key in InitCommand.feconfig.services) {
             const val: IConfigFE.Service = InitCommand.feconfig.services[key];
-            it(`${val} files should exist`, this.itShouldCheckFiles.bind(this, val))
+            it(`${key} files should exist`, this.itShouldCheckFiles.bind(this, val.main))
         }
     }
 
-    private itShouldCheckFiles(val:IConfigFE.Service) {
-        console.log('itShouldCheckFiles', val);
-        expect(true).to.be.true;
+    private itShouldCheckFiles(val: IConfigFE.ServiceItem[]) {
+        let filesExist: boolean = true;
+
+        for (const itemI in val) {
+            const itemV = val[itemI];
+            const filePath = path.resolve(<string>process.env['OUTPUT_DIR'], itemV.path);
+            fs.existsSync(filePath)
+            if (!fs.existsSync(filePath)) {
+                filesExist = false;
+                break
+            }
+        }
+        expect(filesExist).to.be.true;
     }
 }

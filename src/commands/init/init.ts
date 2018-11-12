@@ -38,7 +38,6 @@ export default class InitCommand {
     }
 
     private static addService(service: string) {
-        console.log(this.feconfig);
         const serviceConfig: IConfigFE.Service = this.feconfig.services[service];
         if (!serviceConfig) {
             return false;
