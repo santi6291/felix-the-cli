@@ -9,6 +9,7 @@ export namespace IConfigFE {
     }
 
     export interface Service {
+        extension: string;
         main: ServiceItem[];
         categories: ServiceCategories;
     }
