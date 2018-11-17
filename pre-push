@@ -5,7 +5,11 @@ remote="$1"
 # $2 -- URL to which the push is being done
 url="$2"
 
+# compile Typescript
 npm run build
 
+# Stage build directory
 git add ./dist
+
+# Commit JavaScript distribution directory
 git commit -m 'build distribution'
