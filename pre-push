@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# $1 -- Name of the remote to which the push is being done
+remote="$1"
+# $2 -- URL to which the push is being done
+url="$2"
+
+npm build
+
+git add ./dist
+git commit -m 'build distribution'
