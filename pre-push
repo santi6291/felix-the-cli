@@ -5,7 +5,7 @@ remote="$1"
 # $2 -- URL to which the push is being done
 url="$2"
 
-npm build
+npm run build
 
 git add ./dist
 git commit -m 'build distribution'
