@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 import { resolve } from 'path';
+import * as fs from 'fs';
 
 import { Command } from 'commander';
 
 import InitCommand from './commands/init/init';
+import { IPackageJSON } from './types/package-json';
 
 class Cli {
-    private pjson: any = require('../package.json');
+    private pjson: IPackageJSON = JSON.parse(fs.readFileSync('../package.json', 'utf8'));
     private program: Command = new Command();
 
     constructor(argv: string[]) {
@@ -14,7 +16,7 @@ class Cli {
         // TODO, ensure this will looks at the directory that installed the module
         process.env['OUTPUT_DIR'] = process.env.PWD;
 
-        this.program.version(this.pjson.version);
+        this.program.version(<string>this.pjson.version);
         this.setCommands();
         this.program.parse(argv);
     }

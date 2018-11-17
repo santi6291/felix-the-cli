@@ -6,7 +6,7 @@ import { IConfigFE } from '../../types/config.d';
 import { TemplateService } from '../../services/template/template';
 
 export default class InitCommand {
-    static readonly feconfig: IConfigFE.Config = require('../../../assets/feconfig.json');
+    static readonly feconfig: IConfigFE.Config = JSON.parse(fs.readFileSync('../../../assets/feconfig.json', 'utf8'));
 
     public static run(options: IinitOptions){
         const services: string[] = [];
