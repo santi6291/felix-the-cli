@@ -3,7 +3,7 @@
     "no-duplicate-variable": true,
     "prefer-const": true,
     "no-null-keyword": true,
-    "no-require-imports": true,
+    "no-require-imports": false,
     "arrow-return-shorthand": true,
     "import-spacing": true,
     "no-eval": true,
