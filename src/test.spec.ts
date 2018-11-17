@@ -1,13 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';
-// import * as rimraf from 'rimraf';
 const rimraf = require('rimraf');
-// import { rimraf } from 'rimraf';
 
-
-import { expect } from 'chai';
+// import { expect } from 'chai';
 import 'mocha';
+
+process.env['APP_DIR'] = path.resolve(__dirname, '../');
+process.env['OUTPUT_DIR'] = fs.mkdtempSync(`${os.tmpdir()}${path.sep}`);
 
 import InitSpecs from './commands/init/init.spec';
 
@@ -15,8 +15,8 @@ class TestEnv {
 
     constructor() {
         console.log('Creating Sandbox Directory');
-        process.env['APP_DIR'] = path.resolve(__dirname, '../');
-        process.env['OUTPUT_DIR'] = fs.mkdtempSync(`${os.tmpdir()}${path.sep}`);
+        // process.env['APP_DIR'] = path.resolve(__dirname, '../');
+        // process.env['OUTPUT_DIR'] = fs.mkdtempSync(`${os.tmpdir()}${path.sep}`);
         console.log('OUTPUT_DIR: ', process.env['OUTPUT_DIR']);
 
         new InitSpecs();

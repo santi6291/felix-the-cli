@@ -6,7 +6,7 @@ import { IConfigFE } from '../../types/config.d';
 import { TemplateService } from '../../services/template/template';
 
 export default class InitCommand {
-    static readonly feconfig: IConfigFE.Config = JSON.parse(fs.readFileSync('../../../assets/feconfig.json', 'utf8'));
+    static readonly feconfig: IConfigFE.Config = InitCommand.getFeConfig();
 
     public static run(options: IinitOptions){
         const services: string[] = [];
@@ -65,6 +65,17 @@ export default class InitCommand {
     private static createDir(dir: string) {
         fs.mkdirSync(dir, { recursive: true });
 
+    }
+
+    /**
+     * Get built config for compiler
+     */
+    private static getFeConfig(): IConfigFE.Config {
+        console.log('getFeConfig', process.env['APP_DIR'], process.env['OUTPUT_DIR']);
+        throw('test');
+        // const filePath = path.resolve(<string>process.env['APP_DIR'], 'assets/feconfig.json');
+        // const fileStr: string = fs.readFileSync(filePath, 'utf8');
+        // return JSON.parse(fileStr);
     }
 
 }

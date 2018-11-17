@@ -4,6 +4,11 @@ import * as fs from 'fs';
 
 import { Command } from 'commander';
 
+// Need to set these before files are imported
+process.env['APP_DIR'] = resolve(__dirname, '../');
+// TODO, ensure this will looks at the directory that installed the module
+process.env['OUTPUT_DIR'] = process.env.PWD;
+
 import InitCommand from './commands/init/init';
 import { IPackageJSON } from './types/package-json';
 
@@ -12,10 +17,6 @@ class Cli {
     private program: Command = new Command();
 
     constructor(argv: string[]) {
-        process.env['APP_DIR'] = resolve(__dirname, '../');
-        // TODO, ensure this will looks at the directory that installed the module
-        process.env['OUTPUT_DIR'] = process.env.PWD;
-
         this.program.version(<string>this.pjson.version);
         this.setCommands();
         this.program.parse(argv);
