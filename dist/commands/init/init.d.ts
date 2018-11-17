@@ -11,4 +11,8 @@ export default class InitCommand {
      * @param {string} dir [description]
      */
     private static createDir;
+    /**
+     * Get built config for compiler
+     */
+    private static getFeConfig;
 }
