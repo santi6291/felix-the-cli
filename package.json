@@ -4,11 +4,12 @@
   "description": "NPM package for Vector Frontend Framework with CLI support",
   "main": "index.js",
   "scripts": {
-    "pretest": "tslint -c tslint.json -p tsconfig.json",
     "prestart": "npm run pretest",
+    "prepack": "npm run build",
+    "pretest": "tslint -c tslint.json -p tsconfig.json",
     "test": "mocha -r ts-node/register src/test.spec.ts",
     "watch": "tsc -w",
-    "start": "tsc"
+    "build": "tsc"
   },
   "bin": {
     "frontend": "./build/cli.js"

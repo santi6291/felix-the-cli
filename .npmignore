@@ -1,7 +1,6 @@
 # Logs
 logs
 *.log
-npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
@@ -19,9 +18,6 @@ coverage
 
 # nyc test coverage
 .nyc_output
-
-# node-waf configuration
-.lock-wscript
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
@@ -52,4 +48,7 @@ jspm_packages/
 .next
 
 # ignore build ts output build
-/build
+tsconfig.json
+tslint.json
+.editorconfig
+/src
