@@ -1,6 +1,6 @@
 {
   "name": "vmg-frontend-framework",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "description": "NPM package for Vector Frontend Framework with CLI support",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "build": "tsc"
   },
   "bin": {
-    "frontend": "./build/cli.js"
+    "frontend": "./dist/cli.js"
   },
   "repository": {
     "type": "git",
