@@ -11,9 +11,6 @@
       true,
       "allow-single-concat"
     ],
-    "no-unused-variable": [
-      true
-    ],
     "semicolon": [
       true,
       "always",
@@ -21,8 +18,8 @@
     ],
     "indent": [
       true,
-      4,
-      "spaces"
+      "spaces",
+      4
     ],
     "quotemark": [
       true,
