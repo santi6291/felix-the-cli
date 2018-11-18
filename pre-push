@@ -6,7 +6,7 @@ remote="$1"
 url="$2"
 
 # compile Typescript
-npm run build
+make build
 
 if [ "$(git status --porcelain)" != "" ]; then
   # Uncommitted changes
