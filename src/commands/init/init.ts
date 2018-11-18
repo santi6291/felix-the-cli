@@ -71,11 +71,9 @@ export default class InitCommand {
      * Get built config for compiler
      */
     private static getFeConfig(): IConfigFE.Config {
-        console.log('getFeConfig', process.env['APP_DIR'], process.env['OUTPUT_DIR']);
-        throw('test');
-        // const filePath = path.resolve(<string>process.env['APP_DIR'], 'assets/feconfig.json');
-        // const fileStr: string = fs.readFileSync(filePath, 'utf8');
-        // return JSON.parse(fileStr);
+        const filePath = path.resolve(<string>process.env['APP_DIR'], 'assets/feconfig.json');
+        const fileStr: string = fs.readFileSync(filePath, 'utf8');
+        return JSON.parse(fileStr);
     }
 
 }
