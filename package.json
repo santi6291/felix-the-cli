@@ -3,16 +3,8 @@
   "version": "0.0.2",
   "description": "NPM package for Vector Frontend Framework with CLI support",
   "main": "index.js",
-  "scripts": {
-    "prebuild": "npm run pretest",
-    "pretest": "tslint -c tslint.json -p tsconfig.json",
-    "test": "mocha -r ts-node/register src/test.spec.ts",
-    "watch": "tsc -w",
-    "build": "tsc",
-    "install": "ln -s ${PWD}/pre-push .git/hooks"
-  },
   "bin": {
-    "frontend": "./dist/cli.js"
+    "vmg-frontend": "./dist/cli.js"
   },
   "repository": {
     "type": "git",
