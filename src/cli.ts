@@ -8,7 +8,7 @@ import { Command } from 'commander';
 process.env['APP_DIR'] = resolve(__dirname, '../');
 // TODO, ensure this will looks at the directory that installed the module
 process.env['OUTPUT_DIR'] = process.env.PWD;
-
+console.log(process.env, __dirname);
 import InitCommand from './commands/init/init';
 import { IPackageJSON } from './types/package-json';
 // import { triggerAsyncId } from 'async_hooks';
