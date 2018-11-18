@@ -8,12 +8,12 @@ url="$2"
 # compile Typescript
 npm run build
 
-if ![ -z "$(git status --porcelain)" ]; then
+if [ "$(git status --porcelain)" != "" ]; then
   # Uncommitted changes
   # Stage build directory
     git add ./dist
 
     # Commit JavaScript distribution directory
-    git commit -m 'build distribution'
+    git commit -m "build distribution"
 fi
 
