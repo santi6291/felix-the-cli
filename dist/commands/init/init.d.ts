@@ -11,8 +11,11 @@ export default class InitCommand {
      * @param {string} dir [description]
      */
     private static createDir;
+    private static readonly defaultConfigPath;
+    private static readonly outDiConfigPath;
     /**
      * Get built config for compiler
      */
     private static getFeConfig;
+    private static copyMiscFiles;
 }
