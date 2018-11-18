@@ -1,6 +1,6 @@
 {
   "name": "vmg-frontend-framework",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "NPM package for Vector Frontend Framework with CLI support",
   "main": "index.js",
   "bin": {
