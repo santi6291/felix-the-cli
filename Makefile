@@ -7,7 +7,7 @@ pre-push-link:
 	ln -s ${PWD}/pre-push .git/hooks
 
 tslint:
-	tslint -c tslint.json -p tsconfig.json
+	npx tslint -c tslint.json -p tsconfig.json
 
 test: tslint
 	npx mocha -r ts-node/register src/test.spec.ts
