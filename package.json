@@ -9,7 +9,7 @@
     "test": "mocha -r ts-node/register src/test.spec.ts",
     "watch": "tsc -w",
     "build": "tsc",
-    "install": "ln -s pre-push .git/hooks"
+    "install": "ln -s ${PWD}/pre-push .git/hooks"
   },
   "bin": {
     "frontend": "./dist/cli.js"
