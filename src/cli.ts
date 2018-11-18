@@ -11,9 +11,10 @@ process.env['OUTPUT_DIR'] = process.env.PWD;
 
 import InitCommand from './commands/init/init';
 import { IPackageJSON } from './types/package-json';
+// import { triggerAsyncId } from 'async_hooks';
 
 class Cli {
-    private pjson: IPackageJSON = JSON.parse(fs.readFileSync('../package.json', 'utf8'));
+    private pjson: IPackageJSON = this.getPackageJson();
     private program: Command = new Command();
 
     constructor(argv: string[]) {
@@ -34,6 +35,12 @@ class Cli {
             .option('--ts', 'Enable TypeScript')
             .option('--twig', 'Enable Twig')
             .action(InitCommand.run.bind(InitCommand));
+    }
+
+    private getPackageJson(): IPackageJSON {
+        const pjsonPath: string = resolve(<string>process.env['APP_DIR'], 'package.json');
+        const file: string  = fs.readFileSync(pjsonPath, 'utf8');
+        return JSON.parse(file);
     }
 }
 
