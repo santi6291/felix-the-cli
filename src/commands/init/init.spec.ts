@@ -13,7 +13,8 @@ export default class InitSpecs {
 
     constructor() {
         describe('Add dependencies', this.describe1.bind(this));
-        describe('Verify dependency installed', this.describe2.bind(this))
+        describe('Verify dependency installed', this.describe2.bind(this));
+        describe('Copy of feconfig', this.describe3.bind(this));
     }
 
     private describe1() {
@@ -58,12 +59,21 @@ export default class InitSpecs {
         for (const itemI in val) {
             const itemV = val[itemI];
             const filePath = path.resolve(<string>process.env['OUTPUT_DIR'], itemV.path);
-            fs.existsSync(filePath)
+
             if (!fs.existsSync(filePath)) {
                 filesExist = false;
-                break
+                break;
             }
         }
         expect(filesExist).to.be.true;
+    }
+
+    private describe3() {
+        it('feconfig should exist in out dir', this.itShouldHaveConfigCopy.bind(this));
+    }
+
+    private itShouldHaveConfigCopy() {
+        const filePath = path.resolve(<string>process.env['OUTPUT_DIR'], 'feconfig.json');
+        expect(fs.existsSync(filePath)).to.be.true;
     }
 }

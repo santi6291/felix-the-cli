@@ -30,6 +30,7 @@ export default class InitCommand {
         }
 
         this.addServices(services);
+        this.copyMiscFiles();
         return options;
     }
 
@@ -67,13 +68,29 @@ export default class InitCommand {
 
     }
 
+    private static get defaultConfigPath() {
+        return path.resolve(<string>process.env['APP_DIR'], 'assets/feconfig.json');
+    }
+
+    private static get outDiConfigPath() {
+        return path.resolve(<string>process.env['OUTPUT_DIR'], 'feconfig.json');
+    }
+
     /**
      * Get built config for compiler
      */
     private static getFeConfig(): IConfigFE.Config {
-        const filePath = path.resolve(<string>process.env['APP_DIR'], 'assets/feconfig.json');
+        const filePath = fs.existsSync(this.outDiConfigPath) ? this.outDiConfigPath : this.defaultConfigPath;
         const fileStr: string = fs.readFileSync(filePath, 'utf8');
         return JSON.parse(fileStr);
     }
 
+    private static copyMiscFiles() {
+        const filePath = this.outDiConfigPath;
+
+        if (!fs.existsSync(filePath)) {
+            const data: string = JSON.stringify(this.feconfig, undefined, 2);
+            fs.writeFileSync(filePath, data);
+        }
+    }
 }

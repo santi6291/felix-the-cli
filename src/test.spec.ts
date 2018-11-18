@@ -15,13 +15,8 @@ class TestEnv {
 
     constructor() {
         console.log('Creating Sandbox Directory');
-        // process.env['APP_DIR'] = path.resolve(__dirname, '../');
-        // process.env['OUTPUT_DIR'] = fs.mkdtempSync(`${os.tmpdir()}${path.sep}`);
-        console.log('OUTPUT_DIR: ', process.env['OUTPUT_DIR']);
-
         new InitSpecs();
-
-        describe('Destroying Sandbox Directory', this.clearTmpDir.bind(this));
+        // describe('Destroying Sandbox Directory', this.clearTmpDir.bind(this));
 
     }
 
