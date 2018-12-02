@@ -21,10 +21,10 @@ export default class InitSpecs {
         it('Should Add Scss', this.itShouldAdd.bind(this, 'scss'));
         it('Should Add TS', this.itShouldAdd.bind(this, 'ts'));
         it('Should Add TWIG', this.itShouldAdd.bind(this, 'twig'));
-        it('Should Add All', this.itShouldAdd.bind(this));
+        it('Should Add All', this.itShouldAdd.bind(this, ''));
     }
 
-    private itShouldAdd(prop: string = '') {
+    private itShouldAdd(prop: string) {
         const fakeArgv: string[] = argv.slice(0)
         const fakeProgram:Command = new Command();
 
