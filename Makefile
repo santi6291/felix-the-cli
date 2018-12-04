@@ -1,10 +1,7 @@
-install: npm-install pre-push-link
+install: npm-install
 
 npm-install:
 	npm install
-
-pre-push-link:
-	ln -s ${PWD}/pre-push .git/hooks
 
 tslint:
 	npx tslint -c tslint.json -p tsconfig.json
