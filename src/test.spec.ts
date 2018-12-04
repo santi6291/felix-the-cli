@@ -16,12 +16,12 @@ class TestEnv {
     constructor() {
         console.log('Creating Sandbox Directory');
         new InitSpecs();
-        // describe('Destroying Sandbox Directory', this.clearTmpDir.bind(this));
+        describe('Destroying Sandbox Directory', this.clearTmpDir.bind(this));
 
     }
 
     clearTmpDir() {
-        it('Should Destroy Tmp Dir', ()=> {
+        it('Temp directory destroyed', ()=> {
             rimraf(process.env['OUTPUT_DIR'],(error: Error)=>{
                 if(error) throw error;
             });
