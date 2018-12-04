@@ -53,3 +53,4 @@ jspm_packages/
 
 # ignore build ts output build
 /build
+/dist
