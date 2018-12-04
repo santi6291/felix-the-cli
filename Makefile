@@ -9,8 +9,8 @@ tslint:
 test: tslint
 	npx mocha -r ts-node/register src/test.spec.ts
 
-watch:
-	npx pre-push-link
+dev:
+	npx mocha -r ts-node/register src/test.spec.ts --watch --watch-extensions ts json js
 
 build:
 	npx tsc
