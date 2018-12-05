@@ -14,7 +14,7 @@ export default class InitSpecs {
     constructor() {
         describe('Add dependencies', this.describe1.bind(this));
         describe('Verify dependency installed', this.describe2.bind(this));
-        describe('Copy of feconfig', this.describe3.bind(this));
+        describe('Copy of felixconfig', this.describe3.bind(this));
     }
 
     private describe1() {
@@ -47,8 +47,8 @@ export default class InitSpecs {
     }
 
     private describe2() {
-        for (const key in InitCommand.feconfig.services) {
-            const val: IConfigFE.Service = InitCommand.feconfig.services[key];
+        for (const key in InitCommand.felixconfig.services) {
+            const val: IConfigFE.Service = InitCommand.felixconfig.services[key];
             it(`${key} files should exist`, this.itShouldCheckFiles.bind(this, val.main))
         }
     }
@@ -69,11 +69,11 @@ export default class InitSpecs {
     }
 
     private describe3() {
-        it('feconfig should exist in out dir', this.itShouldHaveConfigCopy.bind(this));
+        it('felixconfig should exist in out dir', this.itShouldHaveConfigCopy.bind(this));
     }
 
     private itShouldHaveConfigCopy() {
-        const filePath = path.resolve(<string>process.env['OUTPUT_DIR'], 'feconfig.json');
+        const filePath = path.resolve(<string>process.env['OUTPUT_DIR'], 'felixconfig.json');
         expect(fs.existsSync(filePath)).to.be.true;
     }
 }

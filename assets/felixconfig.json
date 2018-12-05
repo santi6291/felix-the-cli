@@ -5,36 +5,48 @@
       "main": [
         {
           "path": "./src/scss",
-          "template": "./assets/templates/scss/app.hb"
+          "template": "./assets/templates/scss/main/app.hb"
         },
         {
           "path": "./src/scss/core",
-          "template": "./assets/templates/scss/mixins.hb"
+          "template": "./assets/templates/scss/main/_global.hb"
         },
         {
           "path": "./src/scss/core",
-          "template": "./assets/templates/scss/functions.hb"
+          "template": "./assets/templates/scss/main/_mixins.hb"
         },
         {
           "path": "./src/scss/core",
-          "template": "./assets/templates/scss/settings.hb"
+          "template": "./assets/templates/scss/main/_functions.hb"
         },
         {
           "path": "./src/scss/core",
-          "template": "./assets/templates/scss/settings.hb"
+          "template": "./assets/templates/scss/main/_reset.hb"
+        },
+        {
+          "path": "./src/scss/core",
+          "template": "./assets/templates/scss/main/_settings.hb"
+        },
+        {
+          "path": "./src/scss/core",
+          "template": "./assets/templates/scss/main/_variables.hb"
+        },
+        {
+          "path": "./src/scss/utilities",
+          "template": "./assets/templates/scss/main/_u-colors.hb"
+        },
+        {
+          "path": "./src/scss/utilities",
+          "template": "./assets/templates/scss/main/_u-fonts.hb"
         }
       ],
       "categories": {
-        "block": {
-          "path": "/blocks",
-          "template": "./assets/templates/scss/blocks.hb"
-        },
-        "components": {
-          "path": "/components",
-          "template": "./assets/templates/scss/components.hb"
+        "module": {
+          "path": "/module/_{slug}.scss",
+          "template": "./assets/templates/scss/module.hb"
         },
         "utility": {
-          "path": "/utilities",
+          "path": "/utilities/_u-{slug}.scss",
           "template": "./assets/templates/scss/utilities.hb"
         }
       }

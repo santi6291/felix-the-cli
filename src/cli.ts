@@ -30,7 +30,7 @@ class Cli {
     private commandInit() {
         this.program
             .command('init')
-            .description('Create feconfig.json on root directory')
+            .description('Create felixconfig.json on root directory')
             .option('--scss', 'Enable SCSS')
             .option('--ts', 'Enable TypeScript')
             .option('--twig', 'Enable Twig')

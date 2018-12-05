@@ -6,7 +6,7 @@ import { IConfigFE } from '../../types/config.d';
 import { TemplateService } from '../../services/template/template';
 
 export default class InitCommand {
-    static readonly feconfig: IConfigFE.Config = InitCommand.getFeConfig();
+    static readonly felixconfig: IConfigFE.Config = InitCommand.getFelixconfig();
 
     public static run(options: IinitOptions){
         const services: string[] = [];
@@ -39,7 +39,7 @@ export default class InitCommand {
     }
 
     private static addService(service: string) {
-        const serviceConfig: IConfigFE.Service = this.feconfig.services[service];
+        const serviceConfig: IConfigFE.Service = this.felixconfig.services[service];
         if (!serviceConfig) {
             return false;
         }
@@ -69,17 +69,17 @@ export default class InitCommand {
     }
 
     private static get defaultConfigPath() {
-        return path.resolve(<string>process.env['APP_DIR'], 'assets/feconfig.json');
+        return path.resolve(<string>process.env['APP_DIR'], 'assets/felixconfig.json');
     }
 
     private static get outDiConfigPath() {
-        return path.resolve(<string>process.env['OUTPUT_DIR'], 'feconfig.json');
+        return path.resolve(<string>process.env['OUTPUT_DIR'], 'felixconfig.json');
     }
 
     /**
      * Get built config for compiler
      */
-    private static getFeConfig(): IConfigFE.Config {
+    private static getFelixconfig(): IConfigFE.Config {
         const filePath = fs.existsSync(this.outDiConfigPath) ? this.outDiConfigPath : this.defaultConfigPath;
         const fileStr: string = fs.readFileSync(filePath, 'utf8');
         return JSON.parse(fileStr);
@@ -89,7 +89,7 @@ export default class InitCommand {
         const filePath = this.outDiConfigPath;
 
         if (!fs.existsSync(filePath)) {
-            const data: string = JSON.stringify(this.feconfig, undefined, 2);
+            const data: string = JSON.stringify(this.felixconfig, undefined, 2);
             fs.writeFileSync(filePath, data);
         }
     }
